@@ -1,0 +1,111 @@
+
+
+
+body {
+  background-color: hsl(217, 54%, 11%);
+  font-size: 1.1em;
+  font-family: "Outfit", sans-serif;
+}
+
+a {
+  color: hsl(0, 0%, 100%);
+
+  text-decoration: none;
+}
+
+.container {
+  min-height: 84vh;
+  display: flex;
+  justify-content: center;
+  
+  align-items: center;
+  
+}
+
+.card {
+  padding: 25px;
+  max-width: 350px;
+  border-radius: 15px;
+  background: hsl(216, 50%, 16%);
+  box-shadow: 0 20px 20px hsl(216, 40%, 13%);
+}
+
+.image_equilibrium_img {
+  max-width: 300px;
+  min-width: 280px;
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+}
+/*Relative porque se va jugar con el after y eso*/
+.image_equilibrium_Div {
+  position: relative;
+  cursor: pointer;
+}
+
+.crd_text {
+  margin-top: 25px;
+}
+.text {
+  color: hsl(0, 0%, 100%, 0.699);
+  font-size: 0.8em;
+  margin-top: 15px;
+}
+.text_icon {
+  display: flex;
+}
+
+.icon {
+  margin: 0 5px;
+}
+
+.p_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.p_flex2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.card_footer {
+  border-top: 0.5px solid hsl(215, 32%, 27%);
+  justify-content: start;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+.card_footer > * {
+  margin: 0 5px;
+}
+
+.img_profile {
+  border: 1px solid hsl(0, 0%, 100%);
+  border-radius: 50%;
+  width: 40px;
+}
+
+a:hover {
+  color: hsl(178, 100%, 50%);
+}
+
+.image_equilibrium_Div:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0; /*para centrar  background: #fff7 url("images/icon-view.svg");*/
+  
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 5px;
+}
+
+/*=====================================================================*/
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
