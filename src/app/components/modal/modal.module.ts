@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { ListaComponent } from './lista.component';
 import { FormularioModule } from '../formulario/formulario.module';
+import { ModalComponent } from './modal.component';
 
 @NgModule({
-  declarations: [ListaComponent],
+  declarations: [ModalComponent],
   imports: [CommonModule, IonicModule, FormularioModule],
-  exports: [ListaComponent],
+  exports: [ModalComponent],
 })
-export class ListaModule {}
+export class ModalModule {}

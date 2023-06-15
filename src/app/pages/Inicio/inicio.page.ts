@@ -57,6 +57,7 @@ export class Tab1Page {
       alertController: this.alertController,
       header: 'Error!!',
       subHeader: 'No se creo el estudiante',
+      buttons: ["OK"]
     };
 
     try {
@@ -67,6 +68,7 @@ export class Tab1Page {
             alertController: this.alertController,
             header: 'Bien!!',
             subHeader: 'Se creo el estudiante',
+            buttons: ["OK"]
           })
         : null;
 
@@ -75,10 +77,13 @@ export class Tab1Page {
         alertController: this.alertController,
         header: 'Error!!',
         subHeader: 'No se creo el estudiante: ' + error,
+        buttons: ["OK"]
       };
     } finally {
       await mostrarMensaje(mensaje);
     }
+
+    console.log(this.estudiante);
   }
 
   crearEstudiante(event: Event) {
@@ -86,6 +91,10 @@ export class Tab1Page {
     const ev = event as CustomEvent<OverlayEventDetail<Estudiante>>;
     if (ev.detail.role === 'confirm') {
       let est: Estudiante = ev.detail.data!;
+
+
+      
+      
     }
   }
 

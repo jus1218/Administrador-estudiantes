@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarModal()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Registrar estudiante</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true" id="crearEstudiante"
+        >Crear</ion-button
+      >
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!---CONTENIDO-->
+<ion-content class="ion-padding">
+  <ion-item class="pb-1">
+    <ion-input
+      label="Cedula"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Ingrese cedula"
+      [(ngModel)]="estudiante.cedula"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Nombre"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Ingrese el nombre"
+      [(ngModel)]="estudiante.nombre"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      label="Edad"
+      label-placement="floating"
+      fill="solid"
+      placeholder="Ingrese la edad"
+      [(ngModel)]="estudiante.edad"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-select
+      label="Grado"
+      label-placement="floating"
+      [(ngModel)]="estudiante.grado"
+    >
+      <ion-select-option value="septimo">7°</ion-select-option>
+      <ion-select-option value="Octavo">8°</ion-select-option>
+      <ion-select-option value="Noveno">9°</ion-select-option>
+      <ion-select-option value="decimo">10°</ion-select-option>
+      <ion-select-option value="Undecimo">11°</ion-select-option>
+      <ion-select-option value="Duodecimo">12°</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+<!---FIN CONTENIDO-->
