@@ -54,6 +54,6 @@ export class ListaComponent implements OnInit {
   }
 
   async openModalHelper() {
-    await abrirModal(this.modalController);
+    await abrirModal(this.modalController,'Editar Estudiante');
   }
 }
