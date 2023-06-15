@@ -7,7 +7,10 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './inicio-routing.module';
 import { BuscadorModule } from '../../components/buscador/buscador.module';
-import {ListaModule} from '../../components/lista/lista.module'
+import { ListaModule } from '../../components/lista/lista.module';
+
+import { FormularioModule } from '../../components/formulario/formulario.module';
+import { ModalModule } from '../../components/modal/modal.module';
 
 @NgModule({
   imports: [
@@ -18,7 +21,9 @@ import {ListaModule} from '../../components/lista/lista.module'
     Tab1PageRoutingModule,
     // PERSONALIZADOS
     BuscadorModule,
-    ListaModule
+    ListaModule,
+    /**FormularioModule,
+    ModalModule, */
   ],
   declarations: [Tab1Page],
 })
