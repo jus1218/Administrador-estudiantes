@@ -13,8 +13,13 @@ import { FormularioService } from './formulario.service';
 })
 export class FormularioComponent implements OnInit {
   estudiante: Estudiante;
-  //@ViewChild(IonModal) modal!: IonModal;
-
+  titulo:string="";
+  mensaje: Mensaje = {
+    alertController: this.alertController,
+    header: 'Error!!',
+    subHeader: 'No se creo el estudiante',
+    buttons: ['OK'],
+  };
   constructor(
     private alertController: AlertController,
     private modalController: ModalController
@@ -28,6 +33,8 @@ export class FormularioComponent implements OnInit {
     };
   }
 
+  //===============================================================
+
   ngOnInit() {}
 
   cerrarModal() {
@@ -35,17 +42,10 @@ export class FormularioComponent implements OnInit {
   }
 
   async confirm() {
-    let mensaje: Mensaje = {
-      alertController: this.alertController,
-      header: 'Error!!',
-      subHeader: 'No se creo el estudiante',
-      buttons: ['OK'],
-    };
-
     try {
       //validacion de la respuesta
       true
-        ? (mensaje = {
+        ? (this.mensaje = {
             alertController: this.alertController,
             header: 'Bien!!',
             subHeader: 'Se creo el estudiante',
@@ -53,23 +53,15 @@ export class FormularioComponent implements OnInit {
           })
         : null;
     } catch (error) {
-      mensaje = {
+      this.mensaje = {
         alertController: this.alertController,
         header: 'Error!!',
         subHeader: 'No se creo el estudiante: ' + error,
         buttons: ['OK'],
       };
     } finally {
-      await mostrarMensaje(mensaje);
-      //this.modal.dismiss(this.name, 'confirm');
-    }
-  }
-
-  crearEstudiante(event: Event) {
-    //Enviamos el nuevo
-    const ev = event as CustomEvent<OverlayEventDetail<Estudiante>>;
-    if (ev.detail.role === 'confirm') {
-      let est: Estudiante = ev.detail.data!;
+      await mostrarMensaje(this.mensaje);
+      console.table(this.estudiante);
     }
   }
 }

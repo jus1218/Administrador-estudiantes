@@ -6,7 +6,7 @@ import { FormularioModule } from '../formulario/formulario.module';
 
 @NgModule({
   declarations: [ListaComponent],
-  imports: [CommonModule, IonicModule, FormularioModule],
+  imports: [CommonModule, IonicModule, /*FormularioModule*/],
   exports: [ListaComponent],
 })
 export class ListaModule {}
