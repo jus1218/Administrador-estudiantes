@@ -5,11 +5,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-
   <app-buscador (metodo)="onBuscar($event)"></app-buscador>
 
   <app-lista [elementos]="estudiantes" [palabraFiltro]="palabra"></app-lista>
-
 
   <!---MODAL--->
   <ion-modal trigger="open-modal" (willDismiss)="crearEstudiante($event)">
@@ -29,37 +27,47 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ion-item class="pb-1">
-          <ion-label position="stacked">Cedula</ion-label>
           <ion-input
-            type="text"
+            label="Cedula"
+            label-placement="floating"
+            fill="solid"
             placeholder="Ingrese cedula"
             [(ngModel)]="estudiante.cedula"
           ></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Nombre</ion-label>
           <ion-input
-            type="text"
+            label="Nombre"
+            label-placement="floating"
+            fill="solid"
             placeholder="Ingrese el nombre"
             [(ngModel)]="estudiante.nombre"
           ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Edad</ion-label>
           <ion-input
-            type="text"
+            label="Edad"
+            label-placement="floating"
+            fill="solid"
             placeholder="Ingrese la edad"
             [(ngModel)]="estudiante.edad"
           ></ion-input>
         </ion-item>
+
         <ion-item>
-          <ion-label position="stacked">Grado</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Ingrese el grado que cursa"
+          <ion-select
+            label="Grado"
+            label-placement="floating"
             [(ngModel)]="estudiante.grado"
-          ></ion-input>
+          >
+            <ion-select-option value="septimo">7°</ion-select-option>
+            <ion-select-option value="Octavo">8°</ion-select-option>
+            <ion-select-option value="Noveno">9°</ion-select-option>
+            <ion-select-option value="decimo">10°</ion-select-option>
+            <ion-select-option value="Undecimo">11°</ion-select-option>
+            <ion-select-option value="Duodecimo">12°</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-content>
     </ng-template>
@@ -71,7 +79,4 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-
-
 </ion-content>

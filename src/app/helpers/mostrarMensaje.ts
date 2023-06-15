@@ -4,7 +4,8 @@ export async function mostrarMensaje(mensaje: Mensaje) {
     header: mensaje.header,
     subHeader: mensaje.subHeader,
     message: '',
-    buttons: ['OK'],
+    buttons: mensaje.buttons,
+    
   });
 
   await alert.present();
