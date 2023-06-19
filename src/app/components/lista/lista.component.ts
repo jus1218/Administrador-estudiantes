@@ -4,6 +4,8 @@ import { mostrarMensaje } from 'src/app/helpers/mostrarMensaje';
 import { AlertController, ModalController } from '@ionic/angular';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { abrirModal } from 'src/app/helpers/openModal';
+import { DbServiceService } from '../../service/db-service.service';
+import { EstudiantesService } from '../../service/estudiantes.service';
 
 @Component({
   selector: 'app-lista',
@@ -13,9 +15,12 @@ import { abrirModal } from 'src/app/helpers/openModal';
 export class ListaComponent implements OnInit {
   @Input() elementos: Estudiante[];
   @Input() palabraFiltro: string;
+  CedulaEliminar: number = 0;
   constructor(
     private alertController: AlertController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public database: DbServiceService,
+    private estudiantesService: EstudiantesService
   ) {
     this.elementos = [];
     this.palabraFiltro = '';
@@ -32,14 +37,32 @@ export class ListaComponent implements OnInit {
     {
       text: 'Eliminar',
       role: 'confirm',
-      handler: () => {},
+      handler: () => {
+        this.database.deleteStudent(this.CedulaEliminar).then((msj) => {
+          mostrarMensaje({
+            alertController: this.alertController,
+            header: msj.header,
+            subHeader: msj.content,
+            buttons: ['OK'],
+          });
+          this.estudiantesService.estudiantesActualizados.next();
+        });
+      },
     },
   ];
 
   filtrarElementos(): Estudiante[] {
-    return this.elementos.filter((elemento) =>
-      elemento.nombre.toLowerCase().includes(this.palabraFiltro.toLowerCase())
+    return this.elementos.filter(
+      (el) =>
+        this.filtrar(el.cedula.toString()) ||
+        this.filtrar(el.nombre) ||
+        this.filtrar(el.edad.toString()) ||
+        this.filtrar(el.grado)
     );
+  }
+
+  filtrar(palabra: string): boolean {
+    return palabra.toLowerCase().indexOf(this.palabraFiltro.toLowerCase()) > -1;
   }
 
   delete() {
@@ -53,7 +76,21 @@ export class ListaComponent implements OnInit {
     });
   }
 
-  async openModalHelper() {
-    await abrirModal(this.modalController,'Editar Estudiante');
+  async openModalHelper(student: Estudiante) {
+    await abrirModal(this.modalController, 'Editar Estudiante', student, true);
+  }
+
+  deleteStudent(cedula: number) {
+    this.CedulaEliminar = cedula;
+
+    mostrarMensaje({
+      alertController: this.alertController,
+      header: 'Eliminar',
+      subHeader:
+        'Estas seguro que deseas eliminar el usuario con cedula: ' +
+        cedula +
+        ' ?',
+      buttons: this.alertButtons,
+    });
   }
 }

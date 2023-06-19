@@ -3,17 +3,17 @@
     <ion-buttons slot="start">
       <ion-button (click)="cerrarModal()">Cancelar</ion-button>
     </ion-buttons>
-    <ion-title>{{titulo}}</ion-title>
+    <ion-title>{{ titulo }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true" id="crearEstudiante"
-        >Crear</ion-button
-      >
+      <ion-button (click)="submit()" [strong]="true" id="crearEstudiante">{{
+        modoEdicion ? "Editar" : "Crear"
+      }}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <!---CONTENIDO-->
 <ion-content class="ion-padding">
-  <ion-item class="pb-1">
+  <ion-item class="pb-1" *ngIf="!modoEdicion">
     <ion-input
       label="Cedula"
       label-placement="floating"

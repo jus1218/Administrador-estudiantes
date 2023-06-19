@@ -2,15 +2,32 @@
   <ion-toolbar>
     <ion-title> Lista de Estudiantes </ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item>
+        <app-buscador (metodo)="onBuscar($event)"></app-buscador>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <app-buscador (metodo)="onBuscar($event)"></app-buscador>
-
   <app-lista [elementos]="estudiantes" [palabraFiltro]="palabra"></app-lista>
 
   <!---MODAL--->
 
+  <!--
+  
+    <ion-button
+    (click)="getStudents()"
+    expand="block"
+    fill="clear"
+    shape="round"
+  >
+    Click me
+  </ion-button>
+  
+  --->
 
   <!--BOTTON ACTION BUTTON-->
   <ion-fab
@@ -19,7 +36,7 @@
     vertical="bottom"
     horizontal="end"
   >
-    <ion-fab-button>
+    <ion-fab-button color="dark">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
