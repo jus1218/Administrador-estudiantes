@@ -1,6 +1,6 @@
 export interface Estudiante{
     cedula: number;
     nombre: string;
-    edad: number;
+    carrera: string;
     grado: string;
   }

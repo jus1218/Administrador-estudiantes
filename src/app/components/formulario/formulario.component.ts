@@ -18,7 +18,7 @@ export class FormularioComponent implements OnInit {
     //Molde utilizado para crear y modificar el estudiante
     cedula: 0,
     nombre: '',
-    edad: 0,
+    carrera: '',
     grado: '',
   };
   @Input() modoEdicion: boolean = false;
@@ -32,7 +32,6 @@ export class FormularioComponent implements OnInit {
   constructor(
     private alertController: AlertController,
     private modalController: ModalController,
-    //private dbService: DbServiceService,
     public database: DbServiceService,
     private estudiantesService: EstudiantesService
   ) {}
@@ -44,51 +43,6 @@ export class FormularioComponent implements OnInit {
   cerrarModal() {
     this.modalController.dismiss();
   }
-  /*
-  async confirm() {
-    try {
-      //validacion de la respuesta
-
-      const res = this.dbService.almacenarUsuario(this.estudiante);
-      const a = this.dbService.mostrarUsuarios();
-      console.log(res);
-
-      true
-        ? (this.mensaje = {
-            alertController: this.alertController,
-            header: 'Bien!!',
-            subHeader: res,
-            buttons: ['OK'],
-          })
-        : null;
-    } catch (error) {
-      this.mensaje = {
-        alertController: this.alertController,
-        header: 'Error!!',
-        subHeader: 'No se creo el estudiante: ' + error,
-        buttons: ['OK'],
-      };
-    } finally {
-      await mostrarMensaje(this.mensaje);
-      console.table(this.estudiante);
-    }
-  }
-
-  
-  async crearUsuario() {
-    const { cedula, nombre, edad, grado } = this.estudiante;
-    const query = 'INSERT INTO ESTUDIANTE VALUES(?,?,?,?)'; // Reemplaza "tabla" por el nombre de tu tabla
-    const params: any = [cedula, nombre, edad, grado];
-
-    const result = await this.dbService.executeSql(query, params);
-
-    if (result != null) {
-      console.log('JUSTIN: SE CREO CORRECTAMENTE');
-    } else {
-      console.log('JUSTIN: ERROR AL CREAR UN ESTUDIANTE');
-    }
-  }
-*/
 
   submit() {
     this.modoEdicion ? this.editStudent() : this.addStudent();

@@ -36,13 +36,13 @@ export class Tab1Page implements OnInit {
       {
         cedula: 1,
         nombre: 'Juan',
-        edad: 15,
+        carrera: '',
         grado: 'Noveno',
       },
       {
         cedula: 2,
         nombre: 'Pedro',
-        edad: 12,
+        carrera: '',
         grado: 'Septimo',
       },
     ];
@@ -75,7 +75,7 @@ export class Tab1Page implements OnInit {
       {
         cedula: 0,
         nombre: '',
-        edad: 0,
+        carrera: '',
         grado: '',
       },
       false
