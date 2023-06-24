@@ -31,7 +31,7 @@ export class DbServiceService {
   /*
     cedula: number;
     nombre: string;
-    edad: number;
+    carrera: number;
     grado: string;
   */
   async createTable() {
@@ -40,7 +40,7 @@ export class DbServiceService {
         `CREATE TABLE IF NOT EXISTS estudiantes(
         cedula INTEGER PRIMARY KEY,
         nombre VARCHAR(255) NOT NULL,
-        edad INTEGER,
+        carrera VARCHAR(255),
         grado VARCHAR(255) NOT NULL)
     `,
         []
@@ -54,13 +54,13 @@ export class DbServiceService {
   }
 
   async addStudent(student: Estudiante) {
-    const { cedula, nombre, edad, grado } = student;
+    const { cedula, nombre, carrera, grado } = student;
 
     return this.dataBaseObject
       .executeSql(`INSERT INTO estudiantes VALUES(?,?,?,?)`, [
         cedula,
         nombre,
-        edad,
+        carrera,
         grado,
       ])
       .then(() => {
@@ -87,13 +87,13 @@ export class DbServiceService {
   }
 
   async editStudent(student: Estudiante) {
-    const { cedula, nombre, edad, grado } = student;
+    const { cedula, nombre, carrera, grado } = student;
 
     console.log('JS: ENTROOO');
     return await this.dataBaseObject
       .executeSql(
-        `UPDATE estudiantes SET nombre = ?, edad = ?, grado = ? WHERE cedula = ?`,
-        [nombre, edad, grado, cedula]
+        `UPDATE estudiantes SET nombre = ?, carrera = ?, grado = ? WHERE cedula = ?`,
+        [nombre, carrera, grado, cedula]
       )
       .then(() => {
         console.log('JS: EDITADO...');

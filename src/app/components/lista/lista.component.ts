@@ -56,7 +56,7 @@ export class ListaComponent implements OnInit {
       (el) =>
         this.filtrar(el.cedula.toString()) ||
         this.filtrar(el.nombre) ||
-        this.filtrar(el.edad.toString()) ||
+        this.filtrar(el.carrera) ||
         this.filtrar(el.grado)
     );
   }
